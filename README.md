@@ -15,6 +15,14 @@ A local **proof-of-concept analytics assistant** connecting approved GA4 export 
 
 The point was not to build a chatbot that answers everything. It was to make a bounded, useful piece of business analytics more accessible.
 
+## Solution architecture
+
+![Solution architecture for the GA4 analytics assistant](assets/solution-architecture.png)
+
+*The team’s solution architecture: a plain-English question is interpreted, mapped to approved analytics logic, checked by the application, and only then executed against BigQuery. The language model does not receive direct database access.*
+
+The diagram shows how we separated **question interpretation** from **query execution**. For a non-technical colleague, that means a simpler way to access routine analytics; for TDAI, it means the application can enforce data-source restrictions, SQL validation and a **100 MB** scan cap before a query runs.
+
 ## How a question travels through the system
 
 ```mermaid
